@@ -408,9 +408,13 @@ function setTableContent(page_id) {
 		type: 'post',
 		success: function (result) {
           
-          	if ($.fn.DataTable.isDataTable('#tab-list-content table')) {
-				$('#tab-list-content table').DataTable().destroy();
-			};
+          	var table = $('#tab-list-content table');
+            var columnVisibilityState = [];
+            if ($.fn.DataTable.isDataTable(table)) {
+                var dataTableInstance = table.DataTable();
+                columnVisibilityState = dataTableInstance.columns().visible();
+                dataTableInstance.destroy();
+            };
           
 			$("#tab-list-content tbody").html('');
 			const parsedResult = JSON.parse(result);
@@ -479,18 +483,23 @@ function setTableContent(page_id) {
 	
 			
 	
-			$('#tab-list-content table').DataTable({
-				dom: 'Bfrtip',
-				searching: false,
-				paging: false,
-				info: false,
-				buttons: [
-					{
-						extend: 'colvis',
-						text: 'Mostrar/Ocultar Colunas'
-					}
-				]
-			});
+			var newTable = $('#tab-list-content table').DataTable({
+                dom: 'Bfrtip',
+                searching: false,
+                paging: false,
+                info: false,
+                buttons: [
+                    {
+                        extend: 'colvis',
+                        text: 'Mostrar/Ocultar Colunas'
+                    }
+                ],
+               scrollX: true, 
+              fixedHeader: true, 
+              responsive: true 
+            });
+          
+           newTable.columns().visible(columnVisibilityState);
 		}
 	});
 }
