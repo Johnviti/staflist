@@ -13,12 +13,12 @@ $(document).ready(function () {
 	};
 	pagination_above = new Pagination({
 		container: $("#pagination-above"),
-		pageClickCallback: setTableContent,
+		pageClickCallback: onPageClick,
 		maxVisibleElements: 9,
 	});
 	pagination_bellow = new Pagination({
 		container: $("#pagination-bellow"),
-		pageClickCallback: setTableContent,
+		pageClickCallback: onPageClick,
 		maxVisibleElements: 9,
 	});
 	setTableContent(1);
@@ -383,90 +383,114 @@ $(document).ready(function () {
 		});
 	});
 });
+
+function onPageClick(page) {
+    selected_page = page; 
+    setTableContent(selected_page);
+}
+
+
 function setTableContent(page_id) {
 	var staff_search_name = $("#staff-search").val();
 	var staff_search_category = $('#search-staff-category').val();
 
 	var strParam = "getStaffList=getting&staff_search_name=" + staff_search_name + "&page_id=" + page_id + "&staff_search_category=" + staff_search_category + '&package_size=' + package_size;
 	selected_page = page_id;
-	jQuery.ajax({
+  
+	function formatList(list) {
+		if (!list) return '';
+		return list.split(',').map(item => item.trim()).join(', ');
+	}
+	
+	$.ajax({
 		url: plugin_dir_url + "page_stafflist_server.php",
-		async: false,
 		data: strParam,
 		type: 'post',
 		success: function (result) {
+          
+          	if ($.fn.DataTable.isDataTable('#tab-list-content table')) {
+				$('#tab-list-content table').DataTable().destroy();
+			};
+          
 			$("#tab-list-content tbody").html('');
-			var data = JSON.parse(result)["data"];
-			var page_count = JSON.parse(result)["page_count"];
+			const parsedResult = JSON.parse(result);
+			const { data = [], page_count = 0 } = parsedResult;
+	
 			pagination_above.make(page_count, 1, page_id);
 			pagination_bellow.make(page_count, 1, page_id);
-			if (page_count == 0)
-				return;
-			var index = package_size * (page_id - 1);
-			for (var i = 0; i < data.length; i++) {
-				var row_data = data[i];
-				if (row_data.nationality != null) {
-					var array_nationality = row_data.nationality.split(',');
-					var licensed_nationality = array_nationality[0];
-					for (var j = 1; j < array_nationality.length; j++) {
-						licensed_nationality = licensed_nationality + "," + " " + array_nationality[j];
-					}
+	
+			if (page_count === 0) return;
+	
+			const startIndex = package_size * (page_id - 1);
+	
+			data.forEach((row_data, i) => {
+				const licensed_nationality = formatList(row_data.nationality);
+				const licensed_lang = formatList(row_data.languages);
+				const licensed_countries = formatList(row_data.countries_licensed);
+	
+				const vitae = $('<td class="vitae-link">');
+				if (row_data.vitae_language) {
+					const vitaeLangs = row_data.vitae_language.split(',');
+					const vitaeUrls = row_data.vitae_url.split(',');
+					vitaeLangs.forEach((lang, index) => {
+						vitae.append(`<a href="${pdf_url}${vitaeUrls[index]}" target="_blank">${lang}</a>`);
+					});
 				}
-
-				if (row_data.languages != null) {
-					var array_languages = row_data.languages.split(',');
-					var licensed_lang = array_languages[0];
-					for (var k = 1; k < array_languages.length; k++) {
-						licensed_lang = licensed_lang + "," + " " + array_languages[k];
-					}
+	
+				const socialLink = $('<td class="social-link">');
+				if (row_data.instagram_link) {
+					socialLink.append(`<a href="${row_data.instagram_link}" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>`);
 				}
-
-				if (row_data.countries_licensed != null) {
-					var array_countries = row_data.countries_licensed.split(',');
-					var licensed_countries = array_countries[0];
-					for (var h = 1; h < array_countries.length; h++) {
-						licensed_countries = licensed_countries + "," + " " + array_countries[h];
-					}
+				if (row_data.facebook_link) {
+					socialLink.append(`<a href="${row_data.facebook_link}" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>`);
 				}
-
-				// var row = $('<tr><td>'+(index + i + 1)+'</td><td>'+row_data.name+'</td><td>'+row_data.category+'</td><td>'+row_data.address+'</td><td>'+row_data.phone+'</td><td>'+row_data.phone2+'</td><td>'+row_data.fax+'</td><td>'+(row_data.email == null ? '' : row_data.email)+'</td><td>'+(row_data.nationality == 'null' ? '' : licensed_nationality)+'</td><td>'+(row_data.languages == 'null' ? '' : licensed_lang)+'</td><td>'+(row_data.countries_licensed == 'null' ? '' : licensed_countries)+'</td></tr>');
-				var row = $('<tr><td>' + row_data.name + '</td><td>' + row_data.category + '</td><td>' + row_data.address + '</td><td>' + row_data.phone + '</td><td>' + row_data.phone2 + '</td><td>' + row_data.fax + '</td><td>' + (row_data.email == null ? '' : row_data.email) + '</td><td>' + (row_data.nationality == 'null' ? '' : licensed_nationality) + '</td><td>' + (row_data.languages == 'null' ? '' : licensed_lang) + '</td><td>' + (row_data.countries_licensed == 'null' ? '' : licensed_countries) + '</td></tr>');
-				var vitae = $('<td class="vitae-link">');
-				if (row_data.vitae_language != null) {
-					var vitae_lang = row_data.vitae_language.split(',');
-					var vitae_url = row_data.vitae_url.split(',');
-					for (var j = 0; j < vitae_lang.length; j++) {
-						vitae.append($('<a href="' + pdf_url + vitae_url[j] + '" target="_blank">' + vitae_lang[j] + '</a>'));
-					}
+				if (row_data.linkedin_link) {
+					socialLink.append(`<a href="${row_data.linkedin_link}" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>`);
 				}
-				var social_link = $('<td class="social-link">');
-				if (row_data.instagram_link != '')
-					social_link.append($('<a href="' + row_data.instagram_link + '" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>'));
-				if (row_data.facebook_link != '')
-					social_link.append($('<a href="' + row_data.facebook_link + '" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>'));
-				if (row_data.linkedin_link != '')
-					social_link.append($('<a href="' + row_data.linkedin_link + '" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>'));
+	
+				const row = $(`
+					<tr>
+						<td>${row_data.name || ''}</td>
+						<td>${row_data.category || ''}</td>
+						<td>${row_data.address || ''}</td>
+						<td>${row_data.phone || ''}</td>
+						<td>${row_data.phone2 || ''}</td>
+						<td>${row_data.fax || ''}</td>
+						<td>${row_data.email || ''}</td>
+						<td>${licensed_nationality}</td>
+						<td>${licensed_lang}</td>
+						<td>${licensed_countries}</td>
+					</tr>
+				`);
+	
 				row.append(vitae);
-				row.append(social_link);
-				row.append($('<td>' + (row_data.personType == 'null' ? '' : row_data.personType) + '</td>'));
-				row.append($('<td>' + (row_data.section_name_en == null ? '' : row_data.section_name_en) + '</td>'));
-				row.append($('<td class="staff-manage" staff-id="' + row_data.staff_id + '"><a class="edit-staff"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete-staff"><i class="fa fa-trash" aria-hidden="true"></i></a></td>'));
+				row.append(socialLink);
+				row.append(`<td>${row_data.personType || ''}</td>`);
+				row.append(`<td>${row_data.section_name_en || ''}</td>`);
+				row.append(`
+					<td class="staff-manage" staff-id="${row_data.staff_id}">
+						<a class="edit-staff"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+						<a class="delete-staff"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					</td>
+				`);
+	
 				$("#tab-list-content tbody").append(row);
-			}
-
+			});
+	
+			
+	
 			$('#tab-list-content table').DataTable({
-                dom: 'Bfrtip',
+				dom: 'Bfrtip',
 				searching: false,
-				paging: false, 
+				paging: false,
 				info: false,
-                buttons: [
-                    {
-                        extend: 'colvis',
-                        text: 'Mostrar/Ocultar Colunas'
-                    }
-                ],
-                destroy: true
-            });
+				buttons: [
+					{
+						extend: 'colvis',
+						text: 'Mostrar/Ocultar Colunas'
+					}
+				]
+			});
 		}
 	});
 }
