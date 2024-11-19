@@ -1,0 +1,25 @@
+<?php
+
+$sh_palavras = [
+    'Todas as categorias' => 'Toutes les catégories',
+    'Categoria' => 'Catégorie',
+    'Nome' => 'Nom',
+    'Endereço' => 'Adresse',
+    'Telefone' => 'Téléphone',
+    'Telefone2' => 'Téléphone2',
+    'Fax' => 'Fax',
+    'E-mail' => 'E-mail',
+    'Nacionalidade' => 'Nationalité',
+    'Línguas' => 'Langues',
+    'Países' => 'Pays',
+    'Instagram' => 'Instagram',
+    'Facebook' => 'Facebook',
+    'Linked-in' => 'Linked-in',
+    'Descrição' => 'Description',
+    'Tipo de Pessoa' => 'Type de personne',
+    'Sessão' => 'Session',
+    'Imagem' => 'Image',
+    'Site' => 'Site',
+    'Primeira' => 'Première',
+    'Última' => 'Dernière',
+];

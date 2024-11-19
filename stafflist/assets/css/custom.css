@@ -1,0 +1,166 @@
+#tab-list-content table
+{
+	width: 100%;
+}
+#tab-list-content table td
+{
+	text-align: center;
+	padding: 5px;
+}
+#tab-list-content table th
+{
+	font-size: 1.2em;
+	text-align: center;
+}
+.pagination-container
+{
+	float: right;
+}
+.vitae-link a:not(:first-child), .social-link a:not(:first-child)
+{
+	margin-left: 5px;
+}
+.facebook .fa-facebook, .instagram .fa-instagram, .linkedin .fa-linkedin {
+    font-size: 1.3em;
+    color: #fff;
+    width: 1em;
+}
+.facebook, .instagram, .linkedin
+{
+	background: #3b5998;
+	padding: .4em .4em !important;
+	display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    border-radius: 50px !important;
+}
+.delete-staff a
+{
+	text-decoration: none;
+}
+#tab-add table td, #edit-staff-modal table td
+{
+	padding: 10px;
+}
+#tab-add table td:first-child, #edit-staff-modal table td:first-child
+{
+	text-align: right;
+}
+#staff-nationality, #staff-languages, #vitae-language, #staff-licensed, #staff-personType,  #staff-section, #edit-staff-nationality, #edit-staff-languages, #edit-vitae-language, #edit-staff-licensed, #edit-staff-personType, #edit-staff-section
+{
+	width: 150px;
+}
+
+#tab-list
+{
+	width: 97%;
+	margin:0 auto;
+}
+#category-management
+{
+	width: 350px;
+}
+#section-management {
+	width: 540px;
+}
+#category-list table,
+#section-list table
+{
+	width: 100%;
+	margin-top: 20px;
+}
+#category-list table td,
+#section-list table td
+{
+	text-align: left;
+}
+.delete-category a,
+.delete-section a
+ {
+    cursor: pointer;
+    text-decoration: none;
+}
+#category-list,
+#section-list
+{
+	height: 400px;
+	overflow-y: auto;
+}
+#section-add-part {
+	display: flex;
+	gap: 10px;
+}
+#company-description, #edit-company-description
+{
+	width: 100%;
+	min-height: 100px;
+}
+#tab-list-content table td.social-link, #tab-list-content table td.vitae-link
+{
+	text-align: left;
+	padding-left: 15px;
+    padding-right: 15px;
+}
+#tab-list-content table tbody tr:hover
+{
+	background: lightgrey;
+}
+.edit-staff-name
+{
+	color: blue;
+	text-decoration: underline;
+}
+.cancel-change-name
+{
+	margin-left: 1em;
+}
+#tab-list-content table a
+{
+	cursor: pointer;
+}
+.staff-manage a:nth-child(2)
+{
+	margin-left: 10px;
+}
+#edit-vitae-table
+{
+	margin:0 auto;
+}
+#edit-vitae-table a
+{
+	cursor: pointer;
+}
+#tab-list-content table tr td:nth-child(2)
+{
+	width: 10%;
+}
+#tab-list-content table tr td:nth-child(12)
+{
+	width: 15%;
+}
+.modal
+{
+	width: 100% !important;
+	max-width: 100% !important;
+	background: transparent !important; 
+}
+#image-preview,
+#edit-image-preview {
+	border: 1px solid #eee;
+	object-fit: contain;
+	width: 64px;
+ 	height: 64px;
+}
+#btn-remove-image,
+#btn-edit-remove-image {
+	cursor: pointer;
+	color: white;
+	background: firebrick;
+	display: inline-block;
+	line-height: 10px;
+	padding: .4em;
+	border-radius: 999px;
+	font-family: monospace;
+	visibility: hidden;
+  }

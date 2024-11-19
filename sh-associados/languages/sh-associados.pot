@@ -1,0 +1,97 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: \n"
+"Project-Id-Version: SHAssociados\n"
+"Language-Team: SHDevelopment\n"
+"X-Domain: sh-associados\n"
+"POT-Creation-Date: 2024-09-19 17:04+0000"
+
+#. Author URI of the plugin
+msgid "https://shdev.com.br"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.shdev.com.br/plugins/sh-associados"
+msgstr ""
+
+#. Description of the plugin
+msgid "Plugin de criação de paginas de associados personalizada."
+msgstr ""
+
+#. Author of the plugin
+msgid "Robson Vieira"
+msgstr ""
+
+#. Name of the plugin
+msgid "SHAssociados"
+msgstr ""
+
+msgid "Todas as categorias"
+msgstr ""
+
+msgid "Categoria"
+msgstr ""
+
+msgid "Nome"
+msgstr ""
+
+msgid "Endereço"
+msgstr ""
+
+msgid "Telefone"
+msgstr ""
+
+msgid "Telefone2"
+msgstr ""
+
+msgid "Fax"
+msgstr ""
+
+msgid "E-mail"
+msgstr ""
+
+msgid "Nacionalidade"
+msgstr ""
+
+msgid "Línguas"
+msgstr ""
+
+msgid "Países"
+msgstr ""
+
+msgid "Instagram"
+msgstr ""
+
+msgid "Facebook"
+msgstr ""
+
+msgid "Linked-in"
+msgstr ""
+
+msgid "Descrição"
+msgstr ""
+
+msgid "Tipo de Pessoa"
+msgstr ""
+
+msgid "Sessão"
+msgstr ""
+
+msgid "Imagem"
+msgstr ""
+
+msgid "Site"
+msgstr ""
+
+msgid "Primeira"
+msgstr ""
+
+msgid "Última"
+msgstr ""
