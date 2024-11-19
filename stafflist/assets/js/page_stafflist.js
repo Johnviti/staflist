@@ -51,7 +51,7 @@ $(document).ready(function () {
 	});
 	$('body').on('click', '.delete-staff', function () {
 
-		if (!confirm("Want to delete?")) return;
+		if (!confirm("Tem certeza de que deseja excluir?")) return;
 
 		var staff_id = $(this).parent().attr('staff-id');
 		var strParam = "deleteStaff=deleting&staff_id=" + staff_id;
@@ -62,7 +62,7 @@ $(document).ready(function () {
 			type: 'post',
 			success: function (result) {
 				if (result == 'success')
-					toastr.success("Successfully deleted.");
+					toastr.success("Excluído com sucesso.");
 				else
 					toastr.warning('Failed.');
 				setTableContent(selected_page);
@@ -116,28 +116,28 @@ $(document).ready(function () {
 	});
 	$('#vitae-file').on('filebatchuploaderror', function (event, data, previewId, index) {
 		var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
-		toastr.warning("Upload failed. Retry.");
+		toastr.warning("Falha no upload. Tente novamente.");
 	});
 	$('#vitae-file').on('filebatchuploadsuccess', function (event, data, previewId, index) {
 		var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
 		if (response.uploaded == "OK")
-			toastr.success("Upload success.");
+			toastr.success("Upload com sucesso.");
 		else
-			toastr.warning("Upload failed. Retry.");
+			toastr.warning("Falha no upload. Tente novamente.");
 	});
 	$('#edit-vitae-file').on('filebatchuploaderror', function (event, data, previewId, index) {
 		var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
-		toastr.warning("Upload failed. Retry.");
+		toastr.warning("Falha no upload. Tente novamente.");
 	});
 	$('#edit-vitae-file').on('filebatchuploadsuccess', function (event, data, previewId, index) {
 		var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
 		if (response.uploaded == "OK") {
-			toastr.success("Upload success.");
+			toastr.success("Upload com sucesso.");
 			setTableContent(selected_page);
 			$("#edit-staff-modal #edit-vitae-table tbody").append($('<tr><td><a href="' + pdf_url + response.url + '" target="_blank">' + response.lang + '</a></td><td><a class="edit-delete-vitae" vitae-id="' + response.vitae_id + '"><i class="fa fa-trash" aria-hidden="true"></i></a></tr>'));
 		}
 		else
-			toastr.warning("Upload failed. Retry.");
+			toastr.warning("Falha no upload. Tente novamente.");
 	});
 	$("#vitae-file").prop("disabled", true);
 
@@ -180,7 +180,7 @@ $(document).ready(function () {
 		var site = $('#staff-site').val();
 
 		if (name == "") {
-			toastr.warning("You should enter name.");
+			toastr.warning("Você deve inserir o nome.");
 			return;
 		}
 
@@ -218,13 +218,13 @@ $(document).ready(function () {
 			contentType: false,   // tell jQuery not to set contentType
 			success: function (result) {
 				if (result == "failed") {
-					toastr.warning("Failed.");
+					toastr.warning("Falhou.");
 				}
 				else if (result == "exist") {
-					toastr.warning("This entry has already been registered");
+					toastr.warning("Esta entrada já foi registrada.");
 				}
 				else {
-					toastr.success("Added Successfully.");
+					toastr.success("Adicionado com sucesso.");
 					$("#vitae-file").prop("disabled", false);
 					$("#add-staff").text("Add new");
 					$(".disable-item").prop("disabled", true);
@@ -304,12 +304,12 @@ $(document).ready(function () {
 			type: 'post',
 			success: function (result) {
 				if (result == 'success') {
-					toastr.success("Deleted");
+					toastr.success("Deletado com sucesso.");
 					row.remove();
 					setTableContent(selected_page);
 				}
 				else
-					toastr.warning("Failed");
+					toastr.warning("Falhou");
 			}
 		});
 	});
@@ -334,7 +334,7 @@ $(document).ready(function () {
 		var site = $('#edit-staff-site').val();
 
 		if (name == "") {
-			toastr.warning("You should enter name.");
+			toastr.warning("Você deve inserir o nome.");
 			return;
 		}
 
@@ -374,10 +374,10 @@ $(document).ready(function () {
 			contentType: false,   // tell jQuery not to set contentType
 			success: function (result) {
 				if (result == "success") {
-					toastr.success("Changed Successfully.");
+					toastr.success("Alterado com sucesso.");
 					setTableContent(selected_page);
 				} else {
-					toastr.warning("Failed." + result);
+					toastr.warning("Falhou." + result);
 				}
 			}
 		});
@@ -453,6 +453,17 @@ function setTableContent(page_id) {
 				row.append($('<td class="staff-manage" staff-id="' + row_data.staff_id + '"><a class="edit-staff"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete-staff"><i class="fa fa-trash" aria-hidden="true"></i></a></td>'));
 				$("#tab-list-content tbody").append(row);
 			}
+
+			$('#tab-list-content table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'colvis',
+                        text: 'Mostrar/Ocultar Colunas'
+                    }
+                ],
+                destroy: true
+            });
 		}
 	});
 }
