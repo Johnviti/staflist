@@ -456,6 +456,9 @@ function setTableContent(page_id) {
 
 			$('#tab-list-content table').DataTable({
                 dom: 'Bfrtip',
+				searching: false,
+				paging: false, 
+				info: false,
                 buttons: [
                     {
                         extend: 'colvis',
