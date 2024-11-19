@@ -5,6 +5,7 @@
 
 <h1>Staff List</h1>
 <div class="portlet-body" id="tabswidget">
+  		
      <ul class="nav nav-tabs">
         <li class="active" id="tabmenu-first">
             <a href="#tab-list" data-toggle="tab">Staff List</a>
@@ -16,32 +17,54 @@
     <div class="tab-content">
         <div class="tab-pane fade active in" id="tab-list">
             <div class="">
-                <input type="text" name="" id="staff-search" placeholder="Procurar por nome" style="width:200px; border-radius:2em; margin-top:30px">
+                <input type="text" name="" id="staff-search" placeholder="Pesquisar por nome" style="width:200px; border-radius:2em; margin-top:30px">
                 <select id="search-staff-category" style="width: 150px; margin:20px">
                     <option value="">Todos</option>
                 </select>
                 <!-- <button class="btn btn-primary" id="search-staff" style="border-radius: 2em">Search</button> -->
+                <!-- <div class="select-column">
+                  <select id="column-visibility-select" multiple>
+                      <option value="1">Nome</option>
+                      <option value="2">Categoria</option>
+                      <option value="3">Endereço</option>
+                      <option value="4">Telefone</option>
+                      <option value="5">Telefone2</option>
+                      <option value="6">Fax</option>
+                      <option value="7">E-mail</option>
+                      <option value="8">Nacionalidade</option>
+                      <option value="9">Idiomas</option>
+                      <option value="10">Países licenciados</option>
+                      <option value="11">Curriculum Vitae</option>
+                      <option value="12">Links Sociais</option>
+                      <option value="13">Tipo de Pessoa</option>
+                      <option value="14">Seção</option>
+                      <option value="15">Ações</option>
+                  </select>
+                  <button class="dt-button" id="toggle-column-select">
+                      Ocultar/Mostrar Colunas <span class="dt-down-arrow">▼</span>
+                  </button>
+              	</div> -->
             </div>
             <div id="pagination-above"></div>
             <div id="tab-list-content">
-                <table>
+                <table class="dataTable">
                     <thead>
                         <!-- <th>No</th> -->
-                        <th>Nome</th>
-                        <th>Categoria</th>
-                        <th>Endereço</th>
-                        <th>Telefone</th>
-                        <th>Telefone2</th>
-                        <th>Fax</th>
-                        <th>E-mail</th>
-                        <th>Nacionalidade</th>
-                        <th>Idiomas</th>
-                        <th>Países licenciados<br>para advogar</th>
-                        <th>Curriculum Vitae</th>
-                        <th>Links Sociais</th>
-                        <th>Tipo de Pessoa</th>
-                        <th>Seção</th>
-                        <th></th>
+                        <th class="column-1">Nome</th>
+                        <th class="column-2">Categoria</th>
+                        <th class="column-3">Endereço</th>
+                        <th class="column-4">Telefone</th>
+                        <th class="column-5">Telefone2</th>
+                        <th class="column-6">Fax</th>
+                        <th class="column-7">E-mail</th>
+                        <th class="column-8">Nacionalidade</th>
+                        <th class="column-9">Idiomas</th>
+                        <th class="column-10">Países licenciados</th>
+                        <th class="column-11">Curriculum Vitae</th>
+                        <th class="column-12">Links Sociais</th>
+                        <th class="column-13">Tipo de Pessoa</th>
+                        <th class="column-14">Seção</th>
+                        <th class="column-15">Ações</th>
                     </thead>
                     <tbody>
                         
@@ -1504,3 +1527,53 @@
     </div>
   </div>
 </div>
+
+<style>
+    /* Estilização da tabela */
+    table.dataTable {
+        border-collapse: collapse !important;
+        width: 100% !important;
+        margin-top: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Container da tabela com overflow horizontal */
+    #tab-list-content {
+        overflow-x: auto; /* Adiciona scroll horizontal */
+        -webkit-overflow-scrolling: touch; /* Suporte para dispositivos móveis */
+       width: 100%;
+    }
+
+    /* Estilo do cabeçalho da tabela */
+    table.dataTable thead th {
+        background-color: #054c84;
+        color: white;
+        text-align: left;
+        padding: 12px;
+        border-bottom: 2px solid #ddd;
+        white-space: nowrap; /* Impede a quebra do cabeçalho em duas linhas */
+    }
+
+    /* Linhas da tabela */
+    table.dataTable tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table.dataTable tbody tr:hover {
+        background-color: #e0f7fa;
+    }
+
+    /* Células da tabela */
+    table.dataTable tbody td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      	white-space: nowrap;
+    }
+
+</style>
+
+
+
+
