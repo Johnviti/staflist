@@ -18,8 +18,8 @@ function wpt_add_admin_menu()
 
     add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function);
 
-    add_submenu_page('top_slug', 'Add category', 'Add category', $capability, 'category_slug', 'displayCategory');
-    add_submenu_page('top_slug', 'Add Section', 'Add section', $capability, 'section_slug', 'displaySection');
+    add_submenu_page('top_slug', 'Add category', 'Adicionar Categoria', $capability, 'category_slug', 'displayCategory');
+    add_submenu_page('top_slug', 'Add Section', 'Adicionar Seção', $capability, 'section_slug', 'displaySection');
 }
 
 add_action( 'admin_enqueue_scripts', 'load_wp_media_files' );
