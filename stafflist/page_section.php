@@ -3,7 +3,7 @@
 ?>
 <script type="text/javascript" src="<?php echo plugin_dir_url( __FILE__ ) ?>assets/js/page_section.js?ver=1"></script>
 
-<h1>Section</h1>
+<h1>Seção</h1>
 <div id="section-management">
     <div id="section-add-part">
         <input type="text" name="" id="new-section-en" placeholder="Name English*" maxlength="100" required>

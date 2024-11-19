@@ -10,15 +10,15 @@
             <a href="#tab-list" data-toggle="tab">Staff List</a>
         </li>
         <li id="tabmenu-second">
-            <a href="#tab-add" data-toggle="tab">Add new</a>
+            <a href="#tab-add" data-toggle="tab">Adicionar novo</a>
         </li>
     </ul>   
     <div class="tab-content">
         <div class="tab-pane fade active in" id="tab-list">
             <div class="">
-                <input type="text" name="" id="staff-search" placeholder="Search by Name" style="width:200px; border-radius:2em; margin-top:30px">
+                <input type="text" name="" id="staff-search" placeholder="Procurar por nome" style="width:200px; border-radius:2em; margin-top:30px">
                 <select id="search-staff-category" style="width: 150px; margin:20px">
-                    <option value="">All</option>
+                    <option value="">Todos</option>
                 </select>
                 <!-- <button class="btn btn-primary" id="search-staff" style="border-radius: 2em">Search</button> -->
             </div>
@@ -27,20 +27,20 @@
                 <table>
                     <thead>
                         <!-- <th>No</th> -->
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Phone2</th>
-                        <th>fax</th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Telefone2</th>
+                        <th>Fax</th>
                         <th>E-mail</th>
-                        <th>Nationality</th>
-                        <th>Language</th>
-                        <th>Countries licensed<br>to advocate</th>
+                        <th>Nacionalidade</th>
+                        <th>Idiomas</th>
+                        <th>Países licenciados<br>para advogar</th>
                         <th>Curriculum Vitae</th>
-                        <th>Social Links</th>
-                        <th>Person Type</th>
-                        <th>Section</th>
+                        <th>Links Sociais</th>
+                        <th>Tipo de Pessoa</th>
+                        <th>Seção</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -54,7 +54,7 @@
             <table>
                 <body>
                     <tr>
-                        <td>Category</td>
+                         <td>Categoria</td>
                         <td>
                             <select class="disable-item" id="staff-category">
                                 
@@ -62,23 +62,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Name</td>
+                        <td>Nome</td>
                         <td><input class="disable-item" type="text" name="" id="staff-name"></td>
                     </tr>
                     <tr>
-                        <td>Address</td>
+                        <td>Endereço</td>
                         <td><input class="disable-item" type="text" name="" id="staff-address"></td>
                     </tr>
                     <tr>
-                        <td>Phone</td>
+                        <td>Telefone</td>
                         <td><input class="disable-item" type="text" name="" id="staff-phone"></td>
                     </tr>
                     <tr>
-                        <td>Phone2</td>
+                        <td>Telefone2</td>
                         <td><input class="disable-item" type="text" name="" id="staff-phone2"></td>
                     </tr>
                     <tr>
-                        <td>fax</td>
+                        <td>Fax</td>
                         <td><input class="disable-item" type="text" name="" id="staff-fax"></td>
                     </tr>
                     <tr>
@@ -86,7 +86,7 @@
                         <td><input class="disable-item" type="text" name="" id="staff-email"></td>
                     </tr>
                     <tr>
-                        <td>Nationality</td>
+                        <td>Nacionalidade</td>
                         <td>
                             <select class="disable-item" multiple="multiple" id="staff-nationality">
                             <!-- <select class="disable-item" id="staff-nationality"> -->
@@ -288,7 +288,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Languages</td>
+                        <td>Idiomas</td>
                         <td>
                             <select class="disable-item" multiple="multiple" id="staff-languages">
                                 <option value="af">Afrikanns</option>
@@ -367,7 +367,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Countries licensed to advocate</td>
+                        <td>Países licenciados para advogar</td>
                         <td>
                             <select class="disable-item" multiple="multiple" id="staff-licensed">
                                 <option value="Afghanistan">Afghanistan</option> 
@@ -615,12 +615,12 @@
                     <?php $active_languages = apply_filters( 'wpml_active_languages', NULL );
                     foreach ($active_languages as $active_language): ?>
                         <tr>
-                            <td>Description <img src="<?= $active_language['country_flag_url'] ?>" /></td>
+                            <td>Descrição <img src="<?= $active_language['country_flag_url'] ?>" /></td>
                             <td><textarea class="disable-item" id="company-description-<?= $active_language['id'] ?>"></textarea></td>
                         </tr>
                     <?php endforeach; ?>
                     <tr id="tr-staff-personType">
-                        <td>Person Type</td>
+                        <td>Tipo de Pessoa</td>
                             <td>
                                 <select class="disable-item" id="staff-personType">
                                     <!-- <option value=""></option>  -->
@@ -630,7 +630,7 @@
                             </td>
                     </tr>
                     <tr id="tr-staff-section">
-                        <td>Section</td>
+                        <td>Seção</td>
                             <td>
                                 <select class="disable-item" id="staff-section">
                                     <option value=""></option>
@@ -670,7 +670,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <button class="btn btn-primary" id="add-staff">Register</button>
+                            <button class="btn btn-primary" id="add-staff">Registrar</button>
                         </td>
                     </tr>
                     <tr>
@@ -679,7 +679,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>PDF Language</td>
+                        <td>PDF Idioma</td>
                         <td>
                             <select id="vitae-language">
                                 <option value="AF">Afrikanns</option>
@@ -758,7 +758,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>PDF File</td>
+                         <td> Arquivo PDF</td>
                         <td><input id="vitae-file" name="vitae-file" type="file"></td>
                     </tr>
                 </body>
@@ -771,7 +771,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit staff</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar Funcionário</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -780,7 +780,7 @@
             <table>
                 <body>
                     <tr>
-                        <td>Category</td>
+                        <td>Categoria</td>
                         <td>
                             <select id="edit-staff-category">
                                 
@@ -788,23 +788,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Name</td>
+                        <td>Nome</td>
                         <td><input type="text" name="" id="edit-staff-name"></td>
                     </tr>
                     <tr>
-                        <td>Address</td>
+                         <td>Endereço</td>
                         <td><input type="text" name="" id="edit-staff-address"></td>
                     </tr>
                     <tr>
-                        <td>Phone</td>
+                        <td>Telefone</td>
                         <td><input type="text" name="" id="edit-staff-phone"></td>
                     </tr>
                     <tr>
-                        <td>Phone2</td>
+                        <td>Telefone2</td>
                         <td><input type="text" name="" id="edit-staff-phone2"></td>
                     </tr>
                     <tr>
-                        <td>fax</td>
+                        <td>Fax</td>
                         <td><input type="text" name="" id="edit-staff-fax"></td>
                     </tr>
                     <tr>
@@ -812,7 +812,7 @@
                         <td><input type="text" name="" id="edit-staff-email"></td>
                     </tr>
                     <tr>
-                        <td>Nationality</td>
+                        <td>Nacionalidade</td>
                         <td>
                             <select multiple="multiple" id="edit-staff-nationality">
                             <!-- <select id="edit-staff-nationality"> -->
@@ -1013,7 +1013,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Languages</td>
+                         <td> Idiomas</td>
                         <td>
                             <select multiple="multiple" id="edit-staff-languages">
                             <option value="af">Afrikanns</option>
@@ -1092,7 +1092,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Countries licensed to advocate</td>
+                        <td>Países licenciados para advogar</td>
                         <td>
                             <select multiple="multiple" id="edit-staff-licensed">
                                 <option value="Afghanistan">Afghanistan</option> 
@@ -1340,12 +1340,12 @@
                     <?php $active_languages = apply_filters( 'wpml_active_languages', NULL );
                     foreach ($active_languages as $active_language): ?>
                         <tr>
-                            <td>Description <img src="<?= $active_language['country_flag_url'] ?>" /></td>
+                            <td>Descrição <img src="<?= $active_language['country_flag_url'] ?>" /></td>
                             <td><textarea id="edit-company-description-<?= $active_language['id'] ?>"></textarea></td>
                         </tr>
                     <?php endforeach; ?>
                     <tr>
-                        <td>Person Type</td>
+                        <td>Tipo de Pessoa</td>
                             <td>
                                 <select id="edit-staff-personType">
                                     <!-- <option value=""></option>  -->
@@ -1356,7 +1356,7 @@
                         <!-- <td><input type="text" name="" id="edit-legal-person"></td> -->
                     </tr>
                     <tr>
-                        <td>Section</td>
+                        <td>Seção</td>
                             <td>
                                 <select id="edit-staff-section">
                                     <option value=""></option>
@@ -1413,7 +1413,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>PDF Language</td>
+                        <td>Idioma do PDF</td>
                         <td>
                             <select id="edit-vitae-language">
                                 <option value="AF">Afrikanns</option>
@@ -1492,14 +1492,14 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>PDF File</td>
+                         <td>Arquivo PDF</td>
                         <td><input id="edit-vitae-file" name="edit-vitae-file" type="file"></td>
                     </tr>
                 </body>
             </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>

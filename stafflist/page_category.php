@@ -3,7 +3,7 @@
 ?>
 <script type="text/javascript" src="<?php echo plugin_dir_url( __FILE__ ) ?>assets/js/page_category.js"></script>
 
-<h1>Category</h1>
+<h1>Categoria</h1>
 <div id="category-management">
     <div id="category-add-part">
         <input type="text" name="" id="new-category">
