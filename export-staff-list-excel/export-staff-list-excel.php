@@ -12,10 +12,8 @@ require $plugin_dir . '/vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-if (!function_exists('add_export_button_to_plugin_page')) {
 function add_export_button_to_plugin_page() {
     // Verifica se é a página do plugin staff-list
-
     if(current_user_can('administrator') && isset($_GET['page']) && $_GET['page'] == 'top_slug') {
         ?>
         
@@ -113,7 +111,6 @@ function add_export_button_to_plugin_page() {
     }
 }
 add_action('admin_menu', 'add_export_button_to_plugin_page');
-}
 
 // Função para lidar com a exportação para o Excel
 function handle_export_to_excel() {
@@ -155,109 +152,109 @@ function handle_export_to_excel() {
 		// Definir cabeçalhos das colunas
 		$spreadsheet->setActiveSheetIndex(0);
 		
-		// $sheet->setCellValue('A1', 'Name')
-		// 	->setCellValue('B1', 'Category')
-		// 	->setCellValue('C1', 'Address')
-		// 	->setCellValue('D1', 'Phone')
-		// 	->setCellValue('E1', 'Phone2')
-		// 	->setCellValue('F1', 'Fax')
-		// 	->setCellValue('G1', 'Email')
-		// 	->setCellValue('H1', 'Nationality')
-		// 	->setCellValue('I1', 'Languages')
-		// 	->setCellValue('J1', 'Languages ES')
-		// 	->setCellValue('K1', 'Languages PT')
-		// 	->setCellValue('L1', 'Instagram Link')
-		// 	->setCellValue('M1', 'Facebook Link')
-		// 	->setCellValue('N1', 'Linkedin Link')
-		// 	->setCellValue('O1', 'Staff ID')
-		// 	->setCellValue('P1', 'Person Type')
-		// 	->setCellValue('Q1', 'Vitae Language')
-		// 	->setCellValue('R1', 'Vitae Url')
-		// 	->setCellValue('S1', 'Countries Licensed')
-		// 	->setCellValue('T1', 'Countries Licensed ES')
-		// 	->setCellValue('U1', 'Countries Licensed PT')
-		// 	->setCellValue('V1', 'Descrição PT')
-		// 	->setCellValue('W1', 'Descrição EN')
-		// 	->setCellValue('X1', 'Descrição FR')
-		// 	->setCellValue('Y1', 'Descrição ES');
-
-		$sheet->setCellValue('A1', 'Nome')
-			->setCellValue('B1', 'Categoria')
-			->setCellValue('C1', 'Endereço')
-			->setCellValue('D1', 'Telefone')
-			->setCellValue('E1', 'Telefone2')
+		$sheet->setCellValue('A1', 'Name')
+			->setCellValue('B1', 'Category')
+			->setCellValue('C1', 'Address')
+			->setCellValue('D1', 'Phone')
+			->setCellValue('E1', 'Phone2')
 			->setCellValue('F1', 'Fax')
 			->setCellValue('G1', 'Email')
-			->setCellValue('H1', 'Nacionalidade')
-			->setCellValue('I1', 'Idiomas')
-			->setCellValue('J1', 'Idiomas ES')
-			->setCellValue('K1', 'Idiomas PT')
+			->setCellValue('H1', 'Nationality')
+			->setCellValue('I1', 'Languages')
+			->setCellValue('J1', 'Languages ES')
+			->setCellValue('K1', 'Languages PT')
 			->setCellValue('L1', 'Instagram Link')
 			->setCellValue('M1', 'Facebook Link')
 			->setCellValue('N1', 'Linkedin Link')
 			->setCellValue('O1', 'Staff ID')
-			->setCellValue('P1', 'Tipo de Pessoa')
-			->setCellValue('Q1', 'Idioma Vitae')
+			->setCellValue('P1', 'Person Type')
+			->setCellValue('Q1', 'Vitae Language')
 			->setCellValue('R1', 'Vitae Url')
-			->setCellValue('S1', 'Países Licenciados')
-			->setCellValue('T1', 'Países Licenciados ES')
-			->setCellValue('U1', 'Países Licenciados PT')
+			->setCellValue('S1', 'Countries Licensed')
+			->setCellValue('T1', 'Countries Licensed ES')
+			->setCellValue('U1', 'Countries Licensed PT')
 			->setCellValue('V1', 'Descrição PT')
 			->setCellValue('W1', 'Descrição EN')
 			->setCellValue('X1', 'Descrição FR')
 			->setCellValue('Y1', 'Descrição ES');
-
-			if ($result) {
-				$rowIndex = 2;
-	
-				foreach ($result as $row) {
-					$description_decoded = json_decode($row->description, true, 512, JSON_UNESCAPED_UNICODE);
-					$cellKeys = array(43 => 'V', 4 => 'X', 1 => 'W', 2 => 'Y');
-
-					foreach ($description_decoded as $key => $value) {
-						$numero = (int)$key;
-						if (isset($cellKeys[$numero])) {
-							$key2 = $cellKeys[$numero];
-							$value = str_replace("\n", "", $value);
-							$value = stripslashes($value);
-							$sheet->setCellValue($key2 . $rowIndex, $value);
-						}
-					}
-
-					$sheet->setCellValue('A' . $rowIndex, $row->name)
-							->setCellValue('B' . $rowIndex, $row->category)
-							->setCellValue('C' . $rowIndex, $row->address)
-							->setCellValue('D' . $rowIndex, $row->phone)
-							->setCellValue('E' . $rowIndex, $row->phone2)
-							->setCellValue('F' . $rowIndex, $row->fax)
-							->setCellValue('G' . $rowIndex, $row->email)
-							->setCellValue('H' . $rowIndex, $row->nationality)
-							->setCellValue('I' . $rowIndex, $row->languages)
-							->setCellValue('J' . $rowIndex, $row->languages_es)
-							->setCellValue('K' . $rowIndex, $row->languages_pt)
-							->setCellValue('L' . $rowIndex, $row->instagram_link)
-							->setCellValue('M' . $rowIndex, $row->facebook_link)
-							->setCellValue('N' . $rowIndex, $row->linkedin_link)
-							->setCellValue('O' . $rowIndex, $row->staff_id)
-							->setCellValue('P' . $rowIndex, $row->type)
-							->setCellValue('Q' . $rowIndex, $row->vitae_language)
-							->setCellValue('R' . $rowIndex, $row->vitae_url);
-					$rowIndex++;
-				}
-
-				$writer = new Xlsx($spreadsheet);
-				$fileName = 'StaffList_' . date('Y-m-d_H-i-s') . '.xlsx';
-
-				// Salvar o arquivo
-				$temp_file = tempnam(sys_get_temp_dir(), 'stafflist_');
-				$writer->save($temp_file);
-
-				$file_url = file_get_contents($temp_file);
-				wp_send_json_success(['file_url' => $file_url]);
-			} else {
-				wp_send_json_error(['message' => 'Nenhum dado encontrado.']);
+		
+        if ($result) {
+            // Adicionar mais colunas conforme necessário
+			
+			$cellKeys = array(43 => 'V', 4 => 'X', 1 => 'W', 2 => 'Y');
+			
+            // Preencher os dados dos posts
+            $rowIndex  = 2;
+			
+			foreach ($result as $row) {
+				
+				/* gerando descricao */
+				$description_decoded = json_decode($row->description, true, 512, JSON_UNESCAPED_UNICODE);
+				
+				$key2 = '';
+				foreach ($description_decoded as $key => $value) {
+					
+					$numero = (int)$key;
+					
+					if(isset($cellKeys[$numero])) {
+						$key2 = $cellKeys[$numero];
+						
+						$value = str_replace("\n", "", $value);
+						$value = stripslashes($value);
+						
+						$sheet->setCellValue($key2 . $rowIndex, $value);
+					}					
+				};
+				/* .gerando descricao */
+				
+				//$data_description = json_encode($description_decoded, JSON_UNESCAPED_UNICODE);
+				
+				$sheet->setCellValue('A' . $rowIndex, $row->name);
+				$sheet->setCellValue('B' . $rowIndex, $row->category);
+				$sheet->setCellValue('C' . $rowIndex, $row->address);
+				$sheet->setCellValue('D' . $rowIndex, $row->phone);
+				$sheet->setCellValue('E' . $rowIndex, $row->phone2);
+				$sheet->setCellValue('F' . $rowIndex, $row->fax);
+				$sheet->setCellValue('G' . $rowIndex, $row->email);
+				$sheet->setCellValue('H' . $rowIndex, $row->nationality);
+				$sheet->setCellValue('I' . $rowIndex, $row->languages);
+				$sheet->setCellValue('J' . $rowIndex, $row->languages_es);
+				$sheet->setCellValue('K' . $rowIndex, $row->languages_pt);
+				$sheet->setCellValue('L' . $rowIndex, $row->instagram_link);
+				$sheet->setCellValue('M' . $rowIndex, $row->facebook_link);
+				$sheet->setCellValue('N' . $rowIndex, $row->linkedin_link);			
+				$sheet->setCellValue('O' . $rowIndex, $row->staff_id);
+				$sheet->setCellValue('P' . $rowIndex, $row->personType);
+				$sheet->setCellValue('Q' . $rowIndex, $row->vitae_language);
+				$sheet->setCellValue('R' . $rowIndex, $row->vitae_url);				
+				$sheet->setCellValue('S' . $rowIndex, $row->countries_licensed);			
+				$sheet->setCellValue('T' . $rowIndex, $row->countries_licensed_es);			
+				$sheet->setCellValue('U' . $rowIndex, $row->countries_licensed_pt);
+				
+                $rowIndex ++;
 			}
-	}
+			
+			// Criar o objeto Writer para salvar o arquivo Excel
+			$writer = new Xlsx($spreadsheet);
+			
+			// Salvar o arquivo Excel na saída de dados (output)
+			$fileName = date("YmdHis");
+			$writer->save(plugin_dir_path(__FILE__) . '/upload/xlsx/' . $fileName . '_stafflist.xlsx');
+			
+			// Limpar a memória
+			unset($writer);
+			$spreadsheet->disconnectWorksheets();
+			unset($spreadsheet);
+			
+            // Encerrar a execução e enviar a resposta JSON
+            wp_send_json_success(array(
+                'file_url' => admin_url('admin-ajax.php?action=download_excel&file=' . $fileName)
+            ));
+			
+        } else {
+            wp_send_json_error('Nenhum resultado encontrado.');
+        }
+    }
 }
 add_action('wp_ajax_export_stafflist_to_excel', 'handle_export_to_excel');
 //add_action('wp_ajax_nopriv_export_stafflist_to_excel', 'handle_export_to_excel');
