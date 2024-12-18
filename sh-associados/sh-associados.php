@@ -20,7 +20,7 @@
 
   */
 
-
+  // Verificar esse aqui
   function sh_associados_get_traducao2($idioma, $palavra = null) {
 
 
@@ -320,7 +320,7 @@
 
 
 
-
+// Verificar aqui
   function sh_associados_get_staffdata( $_wpdb, $table_prefix, $staff_id , $idioma = 'pt' ) {
 
 
@@ -374,6 +374,30 @@
         'site'               => 'Site',
 
       ];
+
+      if($idioma = 'en') {
+        $palavras = [
+
+          'image'              => 'Image',
+          'name'               => 'Name',
+          'category'           => 'Category',
+          'address'            => 'Address',
+          'phone'              => 'Phone',
+          'phone2'             => 'Phone2',
+          'fax'                => 'Fax',
+          'email'              => 'E-mail',
+          'nationality'     => 'Nationality',
+          'languages'          => 'Languages',
+          'countries_licensed' => 'Countries',
+          'instagram_link'     => 'Instagram',
+          'facebook_link'      => 'Facebook',
+          'linkedin_link'      => 'Linkedin',
+          'description'        => 'Description',
+          'personType'         => 'Person Type',
+          'section '           => 'Section',
+          'site'               => 'Site',
+        ];
+      }
 
       $contagem = 0;
       $_dados = [];
